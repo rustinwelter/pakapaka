@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='logo.png') }}"
+      type="image/png"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>404エラー - PakaPaka</title>
+  </head>
+  <body class="has-navbar-fixed-top">
+    {% include "/components/navbar.html" %} {% include
+    "/components/notification.html" %}
+    <section
+      class="hero is-fullheight-with-navbar"
+      style="
+        background-image: url(../static/404.jpg);
+        background-size: cover;
+        background-position: center;
+      "
+    >
+      <div class="hero-body" style="background-color: rgba(255, 255, 255, 0.6)">
+        <div class="container has-text-centered" style="padding-top: 20rem">
+          <p class="title is-2">お探しのページは見つかりませんでした。</p>
+          <p class="subtitle is-4">
+            もしかしたらアルパカさんが食べてしまったのかも……
+          </p>
+        </div>
+      </div>
+      <div class="hero-foot" style="background-color: rgba(255, 255, 255, 0.6)">
+        <p>
+          Image by
+          <a
+            href="https://pixabay.com/users/1195798-1195798/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=2780500"
+            >1195798</a
+          >
+          from
+          <a
+            href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=2780500"
+            >Pixabay</a
+          >
+        </p>
+      </div>
+    </section>
+  </body>
+</html>
+<script src="{{ url_for('static', filename='script.js') }}"></script>

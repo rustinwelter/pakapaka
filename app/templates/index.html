@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='logo.png') }}"
+      type="image/png"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>PakaPaka</title>
+  </head>
+  <body class="has-navbar-fixed-top">
+    {% include "/components/navbar.html" %} {% include
+    "/components/notification.html" %}
+    <section
+      class="hero is-fullheight-with-navbar"
+      style="
+        background-image: url(../static/index.jpg);
+        background-size: contain;
+        background-position: center;
+        background-repeat: repeat-x;
+      "
+    >
+      <div class="hero-body" style="position: relative">
+        <div
+          class="container has-text-centered"
+          style="position: absolute; left: 0; right: 0; top: 5%"
+        >
+          <p class="title is-1 is-inline-block box has-background-primary">
+            PakaPakaへようこそ！
+          </p>
+        </div>
+      </div>
+      <div class="hero-foot">
+        <p>
+          Image by
+          <a
+            href="https://pixabay.com/users/knarrhultpia-829850/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=834127"
+            >Pia</a
+          >
+          from
+          <a
+            href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=834127"
+            >Pixabay</a
+          >
+        </p>
+      </div>
+    </section>
+  </body>
+</html>
+<script src="{{ url_for('static', filename='script.js') }}"></script>

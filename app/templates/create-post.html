@@ -1,0 +1,18 @@
+{% extends "base.html" %} {% block title %} 投稿 - PakaPaka {% endblock %}{%
+block heading %}PakaPakaに投稿{% endblock %} {% block content %}
+<div class="box">
+  <form method="post">
+    {{ form.hidden_tag() }}
+    <div class="field">
+      <div class="control">
+        {{ form.textarea(class="textarea is-medium", rows="12") }}
+      </div>
+    </div>
+    <div class="field">
+      <div class="control">
+        {{ form.submit(class="button is-primary is-medium") }}
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock %}

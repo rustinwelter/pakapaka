@@ -1,0 +1,117 @@
+{% extends "base.html" %} {% block title %} ホーム - PakaPaka {% endblock %} {%
+block content %} {% for post in posts %}
+<div class="card block p-3">
+  <article class="media card-content">
+    <div class="media-content">
+      <article class="media">
+        <div class="media-content">
+          <div class="content">
+            <p>
+              <strong>{{ post.user.name }}</strong>
+              <small
+                ><a
+                  href="{{ url_for('views.posts', username = post.user.username) }}"
+                  >{{ "@" + post.user.username }}</a
+                ></small
+              >
+              <small> {{ post.posted_on + delta }}</small>
+            </p>
+            <p>{{ post.text }}</p>
+          </div>
+          <span class="icon-text" title="いいね">
+            <span class="icon has-text-danger">
+              {% if user.id in post.likes | map(attribute="author") | list %}
+              <i
+                class="fa-solid fa-heart fa-lg"
+                id="like-button-{{ post.id }}"
+              ></i>
+              {% else %}
+              <i
+                class="fa-regular fa-heart fa-lg"
+                id="like-button-{{ post.id }}"
+              ></i>
+              {% endif %}
+            </span>
+            <span id="number-of-likes-{{ post.id }}"
+              >{{ post.likes | length }}</span
+            >
+          </span>
+        </div>
+        <div class="media-right">
+          {% if user.id == post.author %}
+          <a href="{{ url_for('views.delete_post', post_id=post.id)}}">
+            <button class="button is-black is-outlined" title="削除">
+              <span class="icon">
+                <i class="fa-solid fa-trash-can"></i>
+              </span>
+            </button>
+          </a>
+          {% endif %}
+        </div>
+      </article>
+    </div>
+  </article>
+  <header class="card-header is-clickable">
+    <p class="card-header-title">
+      コメント&nbsp;{{ post.comments | length }}件
+    </p>
+    <button class="card-header-icon">
+      <span class="icon">
+        <i class="fa-solid fa-angle-down" aria-hidden="true"></i>
+      </span>
+    </button>
+  </header>
+  <div class="card-content is-hidden">
+    {% for comment in post.comments %}
+    <article class="media">
+      <div class="media-content">
+        <div class="content">
+          <p>
+            <strong>{{ comment.user.name }}</strong>
+            <small
+              ><a
+                href="{{ url_for('views.posts', username = comment.user.username) }}"
+                >{{ "@" + comment.user.username }}</a
+              ></small
+            >
+            <small> {{ comment.commented_on + delta }}</small>
+          </p>
+          <p>{{ comment.text }}</p>
+        </div>
+      </div>
+      <div class="media-right">
+        {% if user.id == comment.author %}
+        <a href="{{ url_for('views.delete_comment', comment_id=comment.id)}}">
+          <button class="button is-black is-outlined" title="削除">
+            <span class="icon">
+              <i class="fa-solid fa-trash-can"></i>
+            </span>
+          </button>
+        </a>
+        {% endif %}
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+  <footer class="card-footer">
+    <article class="media card-footer-item">
+      <div class="media-content">
+        <form
+          action="{{ url_for('views.post_comment', post_id=post.id) }}"
+          method="post"
+        >
+          {{ form.hidden_tag() }}
+          <div class="field">
+            <div class="control">{{ form.textarea(class="textarea")}}</div>
+          </div>
+          <div class="field">
+            <div class="control">
+              {{ form.submit(class="button is-primary") }}
+            </div>
+          </div>
+        </form>
+      </div>
+    </article>
+  </footer>
+</div>
+{% endfor %} {% endblock %}

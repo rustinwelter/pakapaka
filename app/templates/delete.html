@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='logo.png') }}"
+      type="image/png"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>退会 - PakaPaka</title>
+  </head>
+  <body class="has-navbar-fixed-top">
+    {% include "/components/navbar.html" %} {% include
+    "/components/notification.html" %}
+    <section
+      class="hero is-fullheight-with-navbar is-fullwidth"
+      style="
+        background-image: url(../static/delete.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+      "
+    >
+      <div class="hero-body" style="background-color: rgba(0, 0, 0, 0.6)">
+        <div class="container has-text-centered is-max-desktop">
+          <p class="title pb-6 is-1 has-text-white">
+            PakaPakaから退会してよろしいですか？
+          </p>
+          <p class="subtitle has-text-white">
+            @{{ username }}（{{ name
+            }}）様に関して、投稿を含めすべての情報が削除されます。これらを復元することはできません。
+          </p>
+          <div class="columns is-mobile">
+            <div class="column is-half is-offset-one-quarter has-text-white">
+              問題がなければ以下の入力事項を満たしてください。
+            </div>
+          </div>
+          <form class="column is-half is-offset-one-quarter" method="post">
+            {{ form.hidden_tag() }}
+            <div class="field">
+              {{ form.email.label(class="label has-text-white") }}
+              <div class="control has-icons-left">
+                {{ form.email(class="input is-danger") }}
+                <span class="icon is-small is-left">
+                  <i class="fa-solid fa-envelope"></i>
+                </span>
+              </div>
+            </div>
+
+            <div class="field">
+              <p class="label has-text-white">
+                {{ form.password.label }}
+                <span class="icon is-small">
+                  <i class="fa-regular fa-eye-slash"></i>
+                </span>
+              </p>
+              <div class="control has-icons-left">
+                {{ form.password(class="input is-danger") }}
+                <span class="icon is-small is-left">
+                  <i class="fa-solid fa-lock"></i>
+                </span>
+              </div>
+            </div>
+
+            <div class="field">
+              <p class="control">{{ form.submit(class="button is-danger") }}</p>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="hero-foot" style="background-color: rgba(0, 0, 0, 0.6)">
+        <p>
+          Image by
+          <a
+            href="https://pixabay.com/users/alexas_fotos-686414/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5405469"
+            >Alexa</a
+          >
+          from
+          <a
+            href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5405469"
+            >Pixabay</a
+          >
+        </p>
+      </div>
+    </section>
+  </body>
+</html>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>

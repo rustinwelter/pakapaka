@@ -1,0 +1,82 @@
+{% extends "base.html" %} {% block title %} 登録 - PakaPaka {% endblock %}{%
+block heading %}PakaPakaに登録{% endblock %} {% block content %}
+<form method="post">
+  {{ form.hidden_tag() }}
+  <div class="field">
+    {{ form.name.label(class="label") }}
+    <div class="control has-icons-left">
+      {{ form.name(class="input", placeholder="Alpaca") }}
+      <span class="icon is-small is-left">
+        <i class="fa-solid fa-user"></i>
+      </span>
+    </div>
+    <p class="help">{{ form.name.description }}</p>
+  </div>
+
+  <div class="field">
+    {{ form.username.label(class="label") }}
+    <div class="control has-icons-left">
+      {{ form.username(class="input", placeholder="pakapaka") }}
+      <span class="icon is-small is-left">
+        <i class="fa-solid fa-at"></i>
+      </span>
+    </div>
+    <p class="help">{{ form.username.description }}</p>
+  </div>
+
+  <div class="field">
+    {{ form.email.label(class="label") }}
+    <div class="control has-icons-left">
+      {{ form.email(class="input", placeholder="alpaca@pakapaka.jp") }}
+      <span class="icon is-small is-left">
+        <i class="fa-solid fa-envelope"></i>
+      </span>
+    </div>
+  </div>
+
+  <div class="field">
+    <p class="label">
+      {{ form.password.label }}
+      <span class="icon is-small">
+        <i class="fa-regular fa-eye-slash"></i>
+      </span>
+    </p>
+    <div class="control has-icons-left">
+      {{ form.password(class="input", placeholder="Ar3y0uMYA1paca?") }}
+      <span class="icon is-small is-left">
+        <i class="fa-solid fa-lock"></i>
+      </span>
+    </div>
+  </div>
+
+  <div class="field">
+    <p class="label">
+      {{ form.confirm.label }}
+      <span class="icon is-small">
+        <i class="fa-regular fa-eye-slash"></i>
+      </span>
+    </p>
+    <div class="control has-icons-left">
+      {{ form.confirm(class="input", placeholder="Ar3y0uMYA1paca?") }}
+      <span class="icon is-small is-left">
+        <i class="fa-solid fa-circle-check"></i>
+      </span>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="control">
+      <label class="checkbox">
+        {{ form.agree_to_tos() }} {% with label =
+        form.agree_to_tos.description.split() %}
+        <a href="{{ url_for('views.terms_of_service') }}">{{ label[0] }}</a>{{
+        label[1] }} {% endwith %}
+      </label>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="control">{{ form.submit(class="button is-primary") }}</div>
+  </div>
+</form>
+{% endblock %}

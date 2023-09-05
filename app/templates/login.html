@@ -1,0 +1,33 @@
+{% extends "base.html" %} {% block title %} ログイン - PakaPaka {% endblock %}
+{% block heading %}PakaPakaにログイン{% endblock %} {% block content %}
+<form method="post">
+  {{ form.hidden_tag() }}
+  <div class="field">
+    {{ form.email.label(class="label") }}
+    <div class="control has-icons-left">
+      {{ form.email(class="input", placeholder="alpaca@pakapaka.jp") }}
+      <span class="icon is-small is-left">
+        <i class="fa-solid fa-envelope"></i>
+      </span>
+    </div>
+  </div>
+
+  <div class="field">
+    <p class="label">
+      {{ form.password.label }}
+      <span class="icon is-small">
+        <i class="fa-regular fa-eye-slash"></i>
+      </span>
+    </p>
+    <div class="control has-icons-left">
+      {{ form.password(class="input", placeholder="Ar3y0uMYA1paca?") }}
+      <span class="icon is-small is-left">
+        <i class="fa-solid fa-lock"></i>
+      </span>
+    </div>
+  </div>
+  <div class="field">
+    <p class="control">{{ form.submit(class="button is-primary") }}</p>
+  </div>
+</form>
+{% endblock %}

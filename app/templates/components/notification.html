@@ -1,0 +1,8 @@
+{% with messages = get_flashed_messages(with_categories=True) %} {% if messages
+%}
+<div class="notification is-link" style="margin: 0">
+  <button class="delete"></button>
+  {% for category, message in messages %}
+  <strong>{{ message }}</strong>
+  {% endfor %} {% endif %}{% endwith %}
+</div>
